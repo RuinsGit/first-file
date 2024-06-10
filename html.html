@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 10px;
+            height: 10px;
+            /*margin: 0.5px;*/
+            /*background-color: #484747;*/
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1px;
+            transition: ease-out 0.5s;
+        }
+
+        .big {
+            width: 396px;
+            height: max-content;
+            background-color: #4b4a4a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1c1515;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="big">
+        <div id="mainDiv" class="container"></div>
+    </div>
+</div>
+<script>
+
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+
+
+    const mainDiv = document.getElementById('mainDiv');
+
+    for (let i = 0; i < 1089; i++) {
+        const newDiv = document.createElement('div');
+        newDiv.className = 'box';
+
+        newDiv.style.backgroundColor = "grey";
+
+        newDiv.addEventListener('mouseover', function () {
+            newDiv.style.backgroundColor = getRandomColor();
+        });
+
+        newDiv.addEventListener('mouseover',function () {
+
+            newDiv.style.boxShadow = getRandomColor()
+
+        })
+        newDiv.addEventListener('mouseover', function() {
+            const currentColor = newDiv.style.backgroundColor;
+            newDiv.style.boxShadow = `0px 0px 110px 0px ${currentColor}`;
+        });
+
+        newDiv.addEventListener('mouseout',function ()
+        {
+
+            setTimeout(()=>{
+                newDiv.style.boxShadow = `none`;
+
+            })
+
+        })
+        newDiv.addEventListener("mouseover",function () {
+
+            const blur = newDiv.style.backgroundColor
+
+
+
+        })
+
+        newDiv.addEventListener("mouseout",function () {
+            setTimeout(()=>{
+
+                newDiv.style.backgroundColor = 'grey';
+
+            } ,20000)
+
+        })
+
+        mainDiv.appendChild(newDiv)
+    }
+
+
+</script>
+</body>
+</html>
+

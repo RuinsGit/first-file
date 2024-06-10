@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        .main-div {
+            width: 486px;
+            height: 486px;
+            background-color: #4b4a4a;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            border-radius: 5px;
+
+
+        }
+
+        @keyframes infinite-rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: #2c2b2b;
+            margin: 1px;
+            border: 1px solid #4d4343;
+            border-radius: 5px;
+
+
+        }
+        .box:hover{
+            /*transform: scale(120%);*/
+            transition: ease-in-out 0.1s ;
+            animation: infinite-rotate 2s linear infinite;
+
+        }
+
+
+
+        .fuji {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            background-color: #000000;
+
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<div class="fuji">
+    <div class="main-div" id="main">
+
+
+    </div>
+</div>
+
+<script>
+
+
+    function getcolors() {
+        const color = "0123456789ABCDEF"
+        let colors = "#"
+
+        for (let i = 0; i < 6; i++) {
+            colors += color[Math.floor(Math.random() * 16)]
+
+
+        }
+        return colors
+
+    }
+
+
+    const main = document.getElementById("main")
+
+    for (let i = 1; i < 200; i++) {
+        const boxdiv = document.createElement("div")
+        boxdiv.className = "box"
+
+
+        main.appendChild(boxdiv)
+
+        boxdiv.style.backgroundColor = "#2c2b2b"
+
+        boxdiv.addEventListener('mouseover', function () {
+
+                boxdiv.style.backgroundColor = getcolors()
+
+            }
+        )
+
+        boxdiv.addEventListener('mouseout', function () {
+
+            setTimeout(() => {
+
+                boxdiv.style.backgroundColor = "#2c2b2b "
+
+            }, 1000 )
+
+        })
+        boxdiv.addEventListener('mouseover',function () {
+
+            const kolge = boxdiv.style.backgroundColor
+
+            boxdiv.style.boxShadow = ` 0px 1px 110px 4px ${kolge}`
+
+        })
+
+        boxdiv.addEventListener('mouseout',function () {
+
+            setTimeout(()=>{
+                boxdiv.style.boxShadow = 'none'
+
+            }, 1000)
+
+
+
+        })
+
+        boxdiv.addEventListener('mouseover',function () {
+
+            const blur = boxdiv.style.backgroundColor
+
+            boxdiv.onblur
+
+        })
+
+
+
+    }
+
+
+</script>
+
+</body>
+</html>
